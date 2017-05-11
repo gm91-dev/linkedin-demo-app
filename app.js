@@ -24,8 +24,6 @@ const options_auth = {
 };
 
 request (options_auth, function (err, res, body) {
-  //let json = JSON.parse(body);
-  //console.log(body);
   let json = JSON.parse(body);
   console.log(json.headline);
 });
