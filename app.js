@@ -12,6 +12,31 @@ var express = require('express');
 // for more info, see: https://www.npmjs.com/package/cfenv
 var cfenv = require('cfenv');
 
+// request module provides a simple way to create HTTP requests in Node.js
+var request = require('request');
+
+const options_auth = {
+  url: 'https://api.linkedin.com/v1/people/~?format=json',
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer AQV_fc2Js9rs9iB4N7U-xXGI63a4A3099vPhYlTIWFhar9SfjZdH3H4-6O1UAU_f7OvOeCfh4VvJzVzzoZ0HImla9R_eKxzTBjhZtFA6c0Lbx_s9SheIAIc9_l_1VVhxLoI1W7JMs0gCD0lC1Bdz4FLkqHETGWEO766qtEzNctFw_mNfaxc'
+  }
+};
+
+request (options_auth, function (err, res, body) {
+  //let json = JSON.parse(body);
+  //console.log(body);
+  let json = JSON.parse(body);
+  console.log(json.headline);
+});
+
+/*
+ * It's just an example of a GET request
+request("http://www.sitepoint.com", function(error, response, body) {
+  console.log(body);
+});
+*/
+
 // create a new express server
 var app = express();
 
