@@ -7,6 +7,8 @@
 // This application uses express as its web server
 // for more info, see: http://expressjs.com
 var express = require('express');
+var app = express();
+var path = require('path');
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -14,6 +16,19 @@ var cfenv = require('cfenv');
 
 // request module provides a simple way to create HTTP requests in Node.js
 var request = require('request');
+
+var routes = require('./routes')(app);
+
+app.get('/', function (req, res) {
+ res.sendFile(path.join(__dirname + '/public/index.html'));
+});
+
+/*
+app.get('/info/linkedin', function(req, res){
+  //console.log(path.join(__dirname + '/public/linkedin.html'));
+  res.sendFile(path.join(__dirname + '/public/linkedin.html'));
+});
+*/
 
 const options_auth = {
   url: 'https://api.linkedin.com/v1/people/~?format=json',
@@ -35,8 +50,6 @@ request("http://www.sitepoint.com", function(error, response, body) {
 });
 */
 
-// create a new express server
-var app = express();
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
