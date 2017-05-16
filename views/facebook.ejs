@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><%= title %></title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="stylesheets/style.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel='stylesheet' href='/stylesheets/style.css' />
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		if("<%= fb_obj.work[0].position.name %>" != null){
+			$('#current_position').val("<%= fb_obj.work[0].position.name %>");
+		}
+		else{
+			$('#current_position').val("unemployed");
+		}
+
+	});
+</script>
+
+</head>
+<body style="background: #5894FB;">
+
+	<custom-navbar data-navbar_page="profile_account"></custom-navbar>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>Profile Description Fields</h3>
+		</div>
+		<div class="panel-body">
+			<div class="col-lg-6">
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon4">Current Position</span>
+								<select id="select_role" class="btn-lg btn-primary">
+									<option>Architect</option>
+									<option>DB Administrator</option>
+									<option>Developer</option>
+									<option>Business Angel</option>
+									<option>Project Manager</option>
+									<option>System Analyst</option>
+									<option>Venture Capitalist</option>
+								</select>
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button type="button" class="btn btn-primary btn-lg customize-btn" aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+
+				<div class="space"></div>
+
+				<div class="panel panel-primary">
+		        	<div class="panel-heading text-center">
+				 		PERSONAL DETAILS
+				 	</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon1">Name</span>
+							<input id="input_name" type="text" class="form-control" placeholder="Name"
+								aria-describedby="sizing-addon1">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_name" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon2">Surname</span>
+							<input id="input_surname" type="text" class="form-control" placeholder="Surname"
+								aria-describedby="sizing-addon1">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_surname" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon3">Email</span>
+							<input id="input_email" type="email" class="form-control" placeholder="Email"
+								aria-describedby="sizing-addon1" disabled="disabled">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_email" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align" disabled="disabled">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon4">Current Position</span>
+							<textarea id="current_position" class="form-control" placeholder="Current Position"
+								aria-describedby="sizing-addon1">
+						</div>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon5">Password</span>
+							<input type="password" class="form-control"
+								placeholder="Password" aria-describedby="sizing-addon1" value="****" disabled="disabled">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>Change </a>
+						</button>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-3">
+						<h3>
+							<span class="label label-grey">Gender</span>
+						</h3>
+					</div>
+					<div class="col-lg-3" style="margin: 3% -5%">
+						<label class="radio-inline">
+							<input type="radio" name="gender" id="sex_m" value="Male">
+								Male
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="gender" id="sex_f" value="Female">
+								Female
+						</label>
+					</div>
+					<div class="col-lg-5" style="margin: 5% 0%;">
+					</div>
+					<div class="col-md-1" style="margin: 2% 0%;">
+						<button id="btn_edit_gender" type="button" class="btn btn-primary btn-md customize-btn" aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>Change
+						</button>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon4">Age</span>
+							<input type="text" class="form-control" placeholder="Age"
+								aria-describedby="sizing-addon1" disabled="disabled">
+						</div>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon4">Birthdate</span>
+							<input type='text' class="form-control" disabled="disabled"/>
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon3">Known Languages</span>
+							<input id="input_languages" type="text" class="form-control" placeholder="Language(s)"
+								aria-describedby="sizing-addon3">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_languages" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon3">Nationality</span>
+							<input id="input_nationality" type="text" class="form-control" placeholder="Nationality"
+								aria-describedby="sizing-addon3">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_nationality" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon3">Job</span>
+							<input id="input_current_job" type="text" class="form-control" placeholder="Job(s)"
+								aria-describedby="sizing-addon3">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_current_job" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon3">Description</span>
+							<textarea id="input_personal_description" class="form-control" rows="5" cols="100" placeholder="Your brief description goes here..."
+								style="resize: none;"></textarea>
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_personal_description" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<div class="space"></div>
+
+				<div class="panel panel-primary">
+				 	<div class="panel-heading text-center">
+				 		ADDRESS
+				 	</div>
+				</div>
+
+				<!-- TODO CONTROLLARE address di bootstrap, potremmo farlo visualizzare in quel modo e salvarlo in quest'altro -->
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon4">Street Name</span>
+							<input id="input_street_name" type="text" class="form-control" placeholder="Street Name"
+								aria-describedby="sizing-addon1">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_street_name" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<!-- TODO: Controllare che il valore immesso sia >= 1 -->
+							<span class="input-group-addon" id="sizing-addon4">Street Number</span>
+							<input id="input_street_number" type="number" min="1" step="1" class="form-control"  placeholder="StreetNumber"
+								aria-describedby="sizing-addon1">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_street_number" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon4">Postal Code</span>
+							<input id="input_postal_code" type="text" class="form-control" placeholder="Postal Code"
+								aria-describedby="sizing-addon1">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_postal_code" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon4">District</span>
+							<input id="input_district" type="text" class="form-control" placeholder="District"
+								aria-describedby="sizing-addon1">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_district" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon4">Area</span>
+							<input id="input_area" type="text" class="form-control" placeholder="Area"
+								aria-describedby="sizing-addon1">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_area" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon" id="sizing-addon4">Telephone Number</span>
+							<input id="input_telephone_number" type="text" class="form-control" placeholder="Telephone Number"
+								aria-describedby="sizing-addon1">
+						</div>
+					</div>
+					<div class=col-lg-1">
+						<button id="btn_edit_telephone_number" type="button" class="btn btn-primary btn-lg customize-btn"
+							aria-label="Right Align">
+							<span class="glyphicon glyphicon-edit"> </span>OK </a>
+						</button>
+					</div>
+				</div>
+
+				<div class="space"></div>
+
+				<div class="panel panel-primary">
+				 	<div class="panel-heading text-center">
+				 		SKILLS AND COMPETENCES
+				 	</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-info">
+				 			<div class="panel-heading text-left">
+				 				Computer Skills
+				 			</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<button class="btn btn-primary" data-toggle="modal" data-target="#computer-skills-modal-modal">Select Computer Skills</button>
+						<div class="modal fade" data-keyboard="false" data-backdrop="static" id="computer-skills-modal-modal">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">
+											<span aria-hidden="true">×</span>
+											<span class="sr-only">Close</span>
+										</button>
+										<h4 class="modal-title">Select Computer Skills</h4>
+									</div>
+									<div class="modal-body">
+										<p>
+  											<medium>Search, select and add an existing computer skill.</medium>
+										</p>
+										<form class="form-inline">
+											<div class="form-group">
+												<div class="input-group">
+													<input id="searchComputerSkill" placeholder="Search for computer skill..." type="text" aria-label="">
+												</div>
+											</div>
+											<button id="btn_add_existing_computer_skill" class="btn btn-primary">Add</button>
+										</form>
+										<div class="space2"></div>
+										<p>
+  											<medium>Add a new computer skill.</medium>
+										</p>
+										<form class="form-inline">
+											<div class="form-group">
+											    <label class="sr-only" for="InputAddComputerSkill">Add</label>
+											    <div class="input-group">
+											    	<div class="input-group-addon">Add Skill</div>
+											        <input type="text" class="form-control" id="InputAddComputerSkill" placeholder="Insert new skill here">
+												</div>
+											</div>
+											<button id="btn_add_computer_skill" type="button" class="btn btn-primary">Add</button>
+										</form>
+										<div class="space2"></div>
+										<p>
+  											<medium>Click on single item to delete it.</medium>
+										</p>
+										<button id="btn_computer_skills_list" type="button" class="btn btn-primary">Computer Skills List</button>
+										<br>
+										<ol id="computer-skills-list">
+
+										</ol>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="space2"></div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-info">
+				 			<div class="panel-heading text-left">
+				 				Social Skills
+				 			</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<button class="btn btn-primary" data-toggle="modal" data-target="#social-skills-modal-modal">Select Social Skills</button>
+						<div class="modal fade" data-keyboard="false" data-backdrop="static" id="social-skills-modal-modal">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">
+											<span aria-hidden="true">×</span>
+											<span class="sr-only">Close</span>
+										</button>
+										<h4 class="modal-title">Select Social Skills</h4>
+									</div>
+									<div class="modal-body">
+										<p>
+  											<medium>Search, select and add an existing social skill.</medium>
+										</p>
+										<div class="input-group">
+											<input id="searchSocialSkill" placeholder="Search for social skill..." type="text" aria-label="">
+											<button id="btn_add_existing_social_skill" type="button" class="btn btn-primary">Add</button>
+										</div>
+										<div class="space2"></div>
+										<p>
+  											<medium>Add a new social skill.</medium>
+										</p>
+										<form class="form-inline">
+											<div class="form-group">
+											    <label class="sr-only" for="InputAddSocialSkill">Add</label>
+											    <div class="input-group">
+											    	<div class="input-group-addon">Add Skill</div>
+											        <input type="text" class="form-control" id="InputAddSocialSkill" placeholder="Insert new skill here">
+												</div>
+											</div>
+											<button id="btn_add_social_skill" type="button" class="btn btn-primary">Add</button>
+										</form>
+										<div class="space2"></div>
+										<p>
+  											<medium>Click on single item to delete it.</medium>
+										</p>
+										<button id="btn_social_skills_list" type="button" class="btn btn-primary">Social Skills List</button>
+										<br>
+										<ol id="social-skills-list">
+
+										</ol>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="space2"></div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="text-center">
+							<form id="form_to_phase0" method="get" action="/phase0">
+								<button type="submit" class="btn btn-success btn-lg btn-block" aria-label="Right Align">
+									Look for existing projects <span class="glyphicon glyphicon-edit" ></span>
+									<br>or<br>
+									Propose an idea
+									<span class="glyphicons" aria-hidden="true">
+										<img width="32" height="32"></img>
+									</span>
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

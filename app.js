@@ -19,6 +19,7 @@ var request = require('request');
 
 var routes = require('./routes')(app);
 
+
 app.get('/', function (req, res) {
  res.sendFile(path.join(__dirname + '/public/index.html'));
 });
@@ -29,6 +30,7 @@ app.get('/info/linkedin', function(req, res){
   res.sendFile(path.join(__dirname + '/public/linkedin.html'));
 });
 */
+
 
 const options_auth = {
   url: 'https://api.linkedin.com/v1/people/~?format=json',
@@ -44,10 +46,18 @@ request (options_auth, function (err, res, body) {
 });
 
 /*
- * It's just an example of a GET request
-request("http://www.sitepoint.com", function(error, response, body) {
+//Facebook API example
+var propertiesObject_FB = { id:'967601343274222', name:'Giulio Montenero', access_token:'EAACEdEose0cBALo5Kmwk7qaMrswrCL9grLGwzuCdOjb9QkUXh4TE3V4fVutAuIsfxsjyNaF0YzR9743Xkamyn9RsL7QXZCX5HnMcQcIH386qKimz7MDg2CgL3zy3FZC7mqqXYa6cPzaToNXSrVKHbk5k6ffdlDZC84DlU8OCZCveaEgtlFRzmOtbxR56dVsZD' };
+
+request({url:'https://graph.facebook.com/', qs:propertiesObject_FB}, function(err, response, body) {
+  if(err) {
+    console.log(err);
+    return;
+  }
   console.log(body);
+  console.log("Get response: " + response.statusCode);
 });
+
 */
 
 
