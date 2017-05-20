@@ -44,7 +44,7 @@ retrieveLinkedInUserInfo = function() {
 retrieveFacebookUserInfo = function() {
 	var deferred = Q.defer();
 
-	var propertiesObject_FB = { id:'967601343274222', name:'Giulio Montenero', access_token:'EAACEdEose0cBAOiAYHuMpTKIFZCLCbAqZAthrWbJyyBBHjoo3jktT9HRTUAe18bHm03B0sCi3jj4dFVFpKm52yTet5l0DamUie3HWoZBlxy87QoO9vf5wjdTI2yOxZCfK1w34YjBwrncwUu8ptK6NuygAiuC7me6QYKgtqivPt737SbeVccjEbyQcJZAqUXwZD' };
+	var propertiesObject_FB = { id:'967601343274222', name:'Giulio Montenero', access_token:'EAACEdEose0cBAMwArvZCTWhv2K0ddWWxtVJp0qp5Vv0ZByySYHyu9aLfHVlZBafQAoMybzZAU3KcFcDA2l1KmY94SEc0x9X5sgkVwSoFebjNxuyX45DC5v2qtL6YmAlUcLAqZCKprjrJWevYbKmMbfroArhX9K34fT6Xqj4S6G3SbH11YZB36SX7ADfTKBZAToZD' };
 
 	request({url:'https://graph.facebook.com/', qs:propertiesObject_FB}, function(err, response, body) {
 	  if(err) {
