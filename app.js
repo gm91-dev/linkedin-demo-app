@@ -10,6 +10,12 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
 var cfenv = require('cfenv');
@@ -58,22 +64,22 @@ request({url:'https://graph.facebook.com/', qs:propertiesObject_FB}, function(er
 
 */
 
-///////////
+// get the app environment from Cloud Foundry
+var appEnv = cfenv.getAppEnv();
 
-var bodyParser = require('body-parser');
+////////////////////////////////////////////////////////////////////////////////////////
 
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+// compose for mysql code
+var dbcontroller = require('./controller/compose-mysql-connection');
+dbcontroller.databaseconnection();
 
-// Util is handy to have around, so thats why that's here.
+
+
 const util = require('util');
 // and so is assert
 const assert = require('assert');
 
 var mysql = require('mysql');
-
-var cfenv = require('cfenv');
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
@@ -95,34 +101,6 @@ var connectionString = credentials.uri;
 // set up a new connection using our config details
 var connection = mysql.createConnection(credentials.uri);
 
-connection.connect(function(err) {
-  if (err) {
-   console.log(err);
-  } else {
-    connection.query('CREATE TABLE fb_info_table (id int auto_increment primary key, name varchar(256) NOT NULL, surname varchar(256) NOT NULL, email varchar(256) NOT NULL, role varchar(256) NOT NULL)', function (err,result){
-      if (err) {
-        console.log(err)
-      }
-    });
-  }
-});
-
-// writing to the database
-app.put("/write_fb_info", function(request, response) {
-
-  var queryText = 'INSERT INTO fb_info_table(name,surname,email,role) VALUES(?, ?, ?, ?)';
-
-  connection.query(queryText, ['Giulio','Montenero','giulio.montenero@ibm.com','IBM Bluemix Technical Sales Advisory Specialist'], function (error,result){
-    if (error) {
-      console.log(error);
-      response.status(500).send(error);
-    } else {
-      console.log("Storing to the mysql database: ");
-      console.log(result);
-      response.send(result);
-    }
-  });
-});
 
 //reading from the database
 app.get("/read_fb_info", function(request, response) {
@@ -140,7 +118,7 @@ app.get("/read_fb_info", function(request, response) {
   });
 });
 
-/////////
+//////////////////////////////////////////////////////////////////////////////////////
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
