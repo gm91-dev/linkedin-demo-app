@@ -3,6 +3,6 @@ applications:
   memory: 256M
   instances: 1
   domain: eu-gb.mybluemix.net
-  name: linkedin-demo-app
-  host: linkedin-demo-app
+  name: month01-demo-app
+  host: month01-demo-app
   disk_quota: 1024M
